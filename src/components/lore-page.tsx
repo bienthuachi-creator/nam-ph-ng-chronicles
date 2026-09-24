@@ -1,0 +1,8 @@
+import { LockKeyhole, MapPin, Shield, Sparkles } from "lucide-react";
+import { PageIntro, RoyalShell } from "@/components/royal-shell";
+
+type Entry = { title: string; subtitle: string; detail: string; locked?: boolean };
+
+export function LorePage({ eyebrow, title, description, entries }: { eyebrow: string; title: string; description: string; entries: Entry[] }) {
+  return <RoyalShell><PageIntro eyebrow={eyebrow} title={title}>{description}</PageIntro><section className="px-6 py-14 md:px-14"><div className="mx-auto grid max-w-6xl gap-px border border-gold/25 bg-gold/25 md:grid-cols-2">{entries.map((entry, index) => <article key={entry.title} className="group relative min-h-64 bg-paper p-8 md:p-10"><span className="font-mono text-[10px] text-cinnabar">HỒ SƠ {String(index + 1).padStart(2, "0")}</span><div className="absolute right-8 top-8 text-gold/50">{entry.locked ? <LockKeyhole /> : index % 3 === 0 ? <MapPin /> : index % 3 === 1 ? <Shield /> : <Sparkles />}</div><h2 className="mt-8 font-display text-3xl transition-colors group-hover:text-cinnabar">{entry.title}</h2><p className="mt-2 text-sm font-semibold text-gold">{entry.subtitle}</p><p className="mt-5 max-w-lg leading-7 text-ink/60">{entry.detail}</p>{entry.locked && <p className="mt-7 border-t border-ink/10 pt-4 font-mono text-[10px] uppercase text-ink/40">Chưa đủ điều kiện mở khóa</p>}</article>)}</div></section></RoyalShell>;
+}
