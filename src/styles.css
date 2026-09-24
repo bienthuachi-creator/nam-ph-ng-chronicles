@@ -160,6 +160,29 @@
 @keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes snow-fall { from { transform: translate3d(0,-10%,0); } to { transform: translate3d(24px,100%,0); } }
 @keyframes scroll-open { from { clip-path: inset(0 48%); opacity: .25; } to { clip-path: inset(0); opacity: 1; } }
+@keyframes film-awaken { from { opacity: 0; transform: scale(1.06); } to { opacity: .78; transform: scale(1); } }
+@keyframes imperial-reveal { 0% { opacity: 0; filter: blur(12px); transform: translateY(24px) scale(.96); } 45% { opacity: .25; } 100% { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); } }
+@keyframes gold-line-open { from { opacity: 0; transform: scaleX(0); } to { opacity: .8; transform: scaleX(1); } }
+
+.opening-film { animation: film-awaken 3s var(--ease-royal) both; }
+.opening-vignette {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--ink) 35%, transparent), color-mix(in oklab, var(--ink) 12%, transparent) 42%, color-mix(in oklab, var(--ink) 88%, transparent)), linear-gradient(to right, color-mix(in oklab, var(--ink) 58%, transparent), transparent 28% 72%, color-mix(in oklab, var(--ink) 58%, transparent));
+}
+.opening-title-frame { position: relative; }
+.opening-title-frame::before, .opening-title-frame::after {
+  position: absolute; left: 8%; right: 8%; height: 1px; content: ""; background: linear-gradient(to right, transparent, var(--gold), transparent); animation: gold-line-open 2.8s 1.2s var(--ease-royal) both;
+}
+.opening-title-frame::before { top: 0; }
+.opening-title-frame::after { bottom: 0; }
+.opening-kicker { animation: imperial-reveal 2.2s .45s var(--ease-royal) both; }
+.opening-glyph { animation: imperial-reveal 2.6s .9s var(--ease-royal) both; }
+.opening-title {
+  color: var(--paper);
+  text-shadow: 0 2px 0 color-mix(in oklab, var(--gold) 70%, transparent), 0 0 28px color-mix(in oklab, var(--gold) 45%, transparent), 0 8px 36px color-mix(in oklab, var(--ink) 90%, transparent);
+  animation: imperial-reveal 3.5s 1.25s var(--ease-royal) both;
+}
+.opening-verse { animation: imperial-reveal 2.4s 3.25s var(--ease-royal) both; }
+.opening-actions { animation: imperial-reveal 2s 4.25s var(--ease-royal) both; }
 
 @utility archive-texture {
   background-image: radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--ink) 4%, transparent) 0 1px, transparent 1px), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--gold) 5%, transparent) 0 1px, transparent 1px);

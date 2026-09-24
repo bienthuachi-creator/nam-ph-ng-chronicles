@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RoyalShell } from "@/components/royal-shell";
 import palace from "@/assets/nam-phuong-palace.jpg";
+import openingVideo from "@/assets/nam-phuong-opening.mp4.asset.json";
 import dossier from "@/assets/ancient-dossier.jpg";
 import seal from "@/assets/jade-seal.jpg";
 
@@ -18,15 +19,21 @@ function Index() {
   const [entered, setEntered] = useState(false);
   return <RoyalShell>
     <section className="relative min-h-[92svh] overflow-hidden bg-ink text-paper">
-      <img src={palace} width={1920} height={1080} alt="Kinh thành Đại Ung trong đêm tuyết" className="absolute inset-0 size-full object-cover opacity-55" />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/25 via-ink/15 to-ink" />
-      <div className="cloud-pattern absolute inset-x-0 top-0 h-16 opacity-40" />
+      <video autoPlay muted loop playsInline preload="auto" poster={palace} aria-label="Khung cảnh cung đình Đại Ung" className="opening-film absolute inset-0 size-full object-cover">
+        <source src={openingVideo.url} type="video/mp4" />
+      </video>
+      <div className="opening-vignette absolute inset-0" />
+      <div className="cloud-pattern absolute inset-x-0 top-0 h-16 opacity-50" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gold/40" />
       <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-        <div className={`max-w-5xl transition-all duration-1000 ${entered ? "opacity-0 scale-95 pointer-events-none" : "animate-[fade-up_1s_var(--ease-royal)_both]"}`}>
-          <p className="mb-7 font-mono text-[10px] uppercase text-gold md:text-xs">Đại Ung · Thịnh Hòa Thập Bát Niên</p>
-          <h1 className="font-display text-6xl leading-none md:text-9xl lg:text-[10rem]">NAM PHƯƠNG</h1>
-          <p className="mx-auto mt-8 max-w-2xl text-sm italic leading-7 text-paper/75 md:text-lg">“Thiên hạ thái bình chỉ là lớp màn che cho một ván cờ chưa kết thúc.”</p>
-          <div className="mt-12 flex flex-col items-center justify-center gap-7 sm:flex-row sm:gap-12">
+        <div className={`max-w-5xl transition-all duration-1000 ${entered ? "pointer-events-none scale-95 opacity-0" : ""}`}>
+          <p className="opening-kicker mb-7 font-mono text-[10px] uppercase text-gold md:text-xs">Đại Ung · Thịnh Hòa Thập Bát Niên</p>
+          <div className="opening-title-frame py-5 md:py-8">
+            <span className="opening-glyph block font-display text-sm text-gold">南　方</span>
+            <h1 className="opening-title mt-2 font-display text-6xl leading-none md:text-9xl lg:text-[10rem]">NAM PHƯƠNG</h1>
+          </div>
+          <p className="opening-verse mx-auto mt-8 max-w-2xl text-sm italic leading-7 text-paper/80 md:text-lg">“Thiên hạ thái bình chỉ là lớp màn che cho một ván cờ chưa kết thúc.”</p>
+          <div className="opening-actions mt-12 flex flex-col items-center justify-center gap-7 sm:flex-row sm:gap-12">
             <Button variant="seal" onClick={() => setEntered(true)} className="h-auto flex-col gap-3 bg-transparent p-0 shadow-none hover:bg-transparent hover:shadow-none">
               <span className="flex size-20 items-center justify-center bg-cinnabar font-display text-2xl leading-6 outline outline-4 outline-gold/20">南<br/>方</span><span className="font-mono text-[10px] uppercase">Bước vào Nam Phương</span>
             </Button>
