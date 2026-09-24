@@ -23,7 +23,6 @@ function Index() {
         <source src={openingVideo.url} type="video/webm" />
       </video>
       <div className="opening-vignette absolute inset-0" />
-      <div className="cloud-pattern absolute inset-x-0 top-0 h-16 opacity-50" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gold/40" />
       <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
         <div className={`max-w-5xl transition-all duration-1000 ${entered ? "pointer-events-none scale-95 opacity-0" : ""}`}>
@@ -33,15 +32,15 @@ function Index() {
             <h1 className="opening-title mt-2 font-display text-6xl leading-none md:text-9xl lg:text-[10rem]">NAM PHƯƠNG</h1>
           </div>
           <p className="opening-verse mx-auto mt-8 max-w-2xl text-sm italic leading-7 text-paper/80 md:text-lg">“Thiên hạ thái bình chỉ là lớp màn che cho một ván cờ chưa kết thúc.”</p>
-          <div className="opening-actions mt-12 flex flex-col items-center justify-center gap-7 sm:flex-row sm:gap-12">
-            <Button variant="seal" onClick={() => setEntered(true)} className="h-auto flex-col gap-3 bg-transparent p-0 shadow-none hover:bg-transparent hover:shadow-none">
-              <span className="flex size-20 items-center justify-center bg-cinnabar font-display text-2xl leading-6 outline outline-4 outline-gold/20">南<br/>方</span><span className="font-mono text-[10px] uppercase">Bước vào Nam Phương</span>
+          <div className="opening-actions mt-9 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-7">
+            <Button variant="seal" onClick={() => setEntered(true)} className="h-auto w-36 flex-col gap-3 bg-transparent p-0 shadow-none hover:bg-transparent hover:shadow-none">
+              <span className="flex size-14 items-center justify-center bg-cinnabar font-display text-lg leading-5 outline outline-2 outline-gold/30">南<br/>方</span><span className="font-mono text-[9px] uppercase">Bước vào Nam Phương</span>
             </Button>
-            <div className="hidden h-px w-24 bg-gold/35 sm:block" />
-            <Button asChild variant="ghost" className="h-auto flex-col items-start text-paper/60 hover:bg-transparent hover:text-gold"><a href="#hoi-ky"><span className="font-mono text-[10px] uppercase">Chương I</span><span className="font-display text-xl">Đọc hồi ký</span></a></Button>
+            <div className="hidden h-10 w-px bg-gold/35 sm:block" />
+            <Button asChild variant="ghost" className="h-auto w-36 flex-col items-center gap-1 text-paper/60 hover:bg-transparent hover:text-gold"><a href="#hoi-ky"><span className="font-mono text-[9px] uppercase">Chương I</span><span className="font-display text-lg">Đọc hồi ký</span></a></Button>
           </div>
         </div>
-        {entered && <div className="animate-[scroll-open_1.1s_var(--ease-royal)_both] bg-paper px-8 py-12 text-ink shadow-2xl md:px-20 md:py-16"><p className="font-display text-2xl leading-10 md:text-4xl">“Ngươi đã bước vào Đại Ung.”</p><Button asChild variant="archive" className="mt-8 border-cinnabar text-cinnabar hover:bg-cinnabar/10"><a href="#hoi-ky">Mở cuộn thư</a></Button></div>}
+        {entered && <div className="w-[min(88vw,24rem)] animate-[scroll-open_1.1s_var(--ease-royal)_both] border-y border-gold/35 bg-paper px-6 py-8 text-ink shadow-2xl md:px-10 md:py-9"><p className="font-display text-xl leading-8 md:text-2xl">“Ngươi đã bước vào Đại Ung.”</p><Button asChild variant="archive" size="sm" className="mt-6 border-cinnabar text-cinnabar hover:bg-cinnabar/10"><a href="#hoi-ky">Mở cuộn thư</a></Button></div>}
       </div>
     </section>
     <section id="hoi-ky" className="px-6 py-20 md:px-14 md:py-28">
