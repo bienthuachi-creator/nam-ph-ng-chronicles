@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RoyalShell } from "@/components/royal-shell";
 import palace from "@/assets/nam-phuong-palace.jpg";
-import openingVideo from "@/assets/nam-phuong-opening.mp4.asset.json";
+import openingVideo from "@/assets/nam-phuong-opening.webm.asset.json";
 import dossier from "@/assets/ancient-dossier.jpg";
 import seal from "@/assets/jade-seal.jpg";
 
@@ -20,7 +20,7 @@ function Index() {
   return <RoyalShell>
     <section className="relative min-h-[92svh] overflow-hidden bg-ink text-paper">
       <video autoPlay muted loop playsInline preload="auto" poster={palace} aria-label="Khung cảnh cung đình Đại Ung" className="opening-film absolute inset-0 size-full object-cover">
-        <source src={openingVideo.url} type="video/mp4" />
+        <source src={openingVideo.url} type="video/webm" />
       </video>
       <div className="opening-vignette absolute inset-0" />
       <div className="cloud-pattern absolute inset-x-0 top-0 h-16 opacity-50" />
