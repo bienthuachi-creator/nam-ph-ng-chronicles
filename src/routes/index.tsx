@@ -29,7 +29,7 @@ function Index() {
           <p className="opening-kicker mb-4 font-mono text-[10px] uppercase text-gold md:mb-5 md:text-xs">Đại Ung · Thịnh Hòa Thập Bát Niên</p>
           <div className="opening-title-frame py-4 md:py-5">
             <span className="opening-glyph block font-display text-sm text-gold">南　方</span>
-            <h1 className="opening-title mt-2 font-display text-6xl leading-none md:text-8xl lg:text-9xl">NAM PHƯƠNG</h1>
+            <h1 className="opening-title mt-2 whitespace-nowrap font-display text-4xl leading-none sm:text-6xl md:text-7xl lg:text-8xl">NAM PHƯƠNG</h1>
           </div>
           <p className="opening-verse mx-auto mt-5 max-w-2xl text-sm italic leading-6 text-paper/90 md:mt-6 md:text-lg md:leading-7">“Thiên hạ thái bình chỉ là lớp màn che cho một ván cờ chưa kết thúc.”</p>
           <div className="opening-actions mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-7 md:mt-7">
