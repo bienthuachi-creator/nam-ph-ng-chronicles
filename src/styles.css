@@ -189,11 +189,6 @@
   background-size: 13px 17px, 19px 23px;
 }
 
-@utility cloud-pattern {
-  background-image: radial-gradient(ellipse at 50% 100%, transparent 45%, color-mix(in oklab, var(--gold) 20%, transparent) 46% 48%, transparent 49%);
-  background-size: 64px 28px;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }

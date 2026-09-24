@@ -17,20 +17,20 @@ export function RoyalShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-paper text-ink archive-texture">
       <Button variant="archive" size="icon" aria-label="Mở thư khố" onClick={() => setOpen(true)} className="fixed left-4 top-4 z-50 md:hidden"><Menu /></Button>
       {open && <button aria-label="Đóng nền menu" className="fixed inset-0 z-40 bg-ink/70 md:hidden" onClick={() => setOpen(false)} />}
-      <aside className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col overflow-hidden border-r border-gold/20 bg-ink text-paper transition-transform duration-500 md:w-20 md:hover:w-64 ${open ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
+      <aside className={`group fixed inset-y-0 left-0 z-50 flex w-64 flex-col overflow-hidden border-r border-gold/20 bg-ink text-paper transition-transform duration-500 md:w-20 md:hover:w-64 ${open ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
         <div className="flex h-24 shrink-0 items-center border-b border-gold/15 px-6">
           <div className="flex size-8 shrink-0 items-center justify-center border border-gold font-display text-lg text-gold">南</div>
-          <span className="ml-4 whitespace-nowrap font-display text-gold">THƯ KHỐ</span>
+          <span className="ml-4 whitespace-nowrap font-display text-gold transition-opacity duration-200 md:opacity-0 md:group-hover:opacity-100">THƯ KHỐ</span>
           <Button variant="ghost" size="icon" aria-label="Đóng thư khố" className="ml-auto text-paper md:hidden" onClick={() => setOpen(false)}><X /></Button>
         </div>
         <nav className="flex flex-1 flex-col gap-1 py-5">
           {items.map(([number, label, to]) => (
             <Link key={to} to={to} onClick={() => setOpen(false)} className={`flex h-12 items-center px-6 transition-colors ${pathname === to ? "bg-gold/10 text-gold" : "text-paper/55 hover:text-gold"}`}>
-              <span className="w-8 shrink-0 font-mono text-[11px]">{number}</span><span className="ml-4 whitespace-nowrap text-xs uppercase">{label}</span>
+               <span className="w-8 shrink-0 font-mono text-[11px]">{number}</span><span className="ml-4 whitespace-nowrap text-xs uppercase transition-opacity duration-200 md:opacity-0 md:group-hover:opacity-100">{label}</span>
             </Link>
           ))}
         </nav>
-        <div className="border-t border-gold/15 p-5"><Button variant="archive" className="w-full justify-start overflow-hidden"><LogIn /><span className="whitespace-nowrap">Đăng nhập</span></Button></div>
+        <div className="border-t border-gold/15 p-5"><Button variant="archive" className="w-full justify-start overflow-hidden"><LogIn /><span className="whitespace-nowrap transition-opacity duration-200 md:opacity-0 md:group-hover:opacity-100">Đăng nhập</span></Button></div>
       </aside>
       <main className="min-h-screen md:ml-20">{children}</main>
       <div className="pointer-events-none fixed inset-y-0 right-0 z-50 w-1 bg-gold/20" />
