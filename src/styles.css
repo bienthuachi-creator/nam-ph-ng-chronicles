@@ -19,6 +19,10 @@
  */
 
 @theme inline {
+  --font-display: "DM Serif Display", serif;
+  --font-body: "Fira Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --ease-royal: cubic-bezier(0.32, 0.72, 0, 1);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -59,42 +63,50 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --color-cinnabar: var(--cinnabar);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.125rem;
+  --paper: oklch(0.89 0.035 83);
+  --ink: oklch(0.25 0.018 67);
+  --gold: oklch(0.66 0.088 79);
+  --cinnabar: oklch(0.43 0.155 25);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(0.93 0.026 82);
+  --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --primary: var(--cinnabar);
+  --primary-foreground: var(--paper);
+  --secondary: oklch(0.83 0.055 82);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.84 0.027 82);
+  --muted-foreground: oklch(0.43 0.025 67);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.59 0.04 77 / 35%);
+  --input: oklch(0.59 0.04 77 / 45%);
+  --ring: var(--gold);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: var(--ink);
+  --sidebar-foreground: var(--paper);
+  --sidebar-primary: var(--cinnabar);
+  --sidebar-primary-foreground: var(--paper);
+  --sidebar-accent: oklch(0.32 0.025 67);
+  --sidebar-accent-foreground: var(--gold);
+  --sidebar-border: oklch(0.66 0.088 79 / 25%);
+  --sidebar-ring: var(--gold);
 }
 
 .dark {
@@ -140,5 +152,25 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    letter-spacing: 0;
   }
+}
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes snow-fall { from { transform: translate3d(0,-10%,0); } to { transform: translate3d(24px,100%,0); } }
+@keyframes scroll-open { from { clip-path: inset(0 48%); opacity: .25; } to { clip-path: inset(0); opacity: 1; } }
+
+@utility archive-texture {
+  background-image: radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--ink) 4%, transparent) 0 1px, transparent 1px), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--gold) 5%, transparent) 0 1px, transparent 1px);
+  background-size: 13px 17px, 19px 23px;
+}
+
+@utility cloud-pattern {
+  background-image: radial-gradient(ellipse at 50% 100%, transparent 45%, color-mix(in oklab, var(--gold) 20%, transparent) 46% 48%, transparent 49%);
+  background-size: 64px 28px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
