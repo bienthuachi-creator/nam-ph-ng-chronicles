@@ -18,21 +18,21 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [entered, setEntered] = useState(false);
   return <RoyalShell>
-    <section className="relative min-h-[92svh] overflow-hidden bg-ink text-paper">
+    <section className="relative min-h-[100svh] overflow-hidden bg-ink text-paper">
       <video autoPlay muted loop playsInline preload="auto" poster={palace} aria-label="Khung cảnh cung đình Đại Ung" className="opening-film absolute inset-0 size-full object-cover">
         <source src={openingVideo.url} type="video/webm" />
       </video>
       <div className="opening-vignette absolute inset-0" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gold/40" />
-      <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-        <div className={`max-w-5xl transition-all duration-1000 ${entered ? "pointer-events-none scale-95 opacity-0" : ""}`}>
-          <p className="opening-kicker mb-7 font-mono text-[10px] uppercase text-gold md:text-xs">Đại Ung · Thịnh Hòa Thập Bát Niên</p>
-          <div className="opening-title-frame py-5 md:py-8">
+      <div className="absolute inset-0 flex items-center justify-center px-6 py-5 text-center md:py-7">
+        <div className={`w-full max-w-5xl transition-all duration-1000 ${entered ? "pointer-events-none scale-95 opacity-0" : ""}`}>
+          <p className="opening-kicker mb-4 font-mono text-[10px] uppercase text-gold md:mb-5 md:text-xs">Đại Ung · Thịnh Hòa Thập Bát Niên</p>
+          <div className="opening-title-frame py-4 md:py-5">
             <span className="opening-glyph block font-display text-sm text-gold">南　方</span>
-            <h1 className="opening-title mt-2 font-display text-6xl leading-none md:text-9xl lg:text-[10rem]">NAM PHƯƠNG</h1>
+            <h1 className="opening-title mt-2 font-display text-6xl leading-none md:text-8xl lg:text-9xl">NAM PHƯƠNG</h1>
           </div>
-          <p className="opening-verse mx-auto mt-8 max-w-2xl text-sm italic leading-7 text-paper/80 md:text-lg">“Thiên hạ thái bình chỉ là lớp màn che cho một ván cờ chưa kết thúc.”</p>
-          <div className="opening-actions mt-9 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-7">
+          <p className="opening-verse mx-auto mt-5 max-w-2xl text-sm italic leading-6 text-paper/90 md:mt-6 md:text-lg md:leading-7">“Thiên hạ thái bình chỉ là lớp màn che cho một ván cờ chưa kết thúc.”</p>
+          <div className="opening-actions mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-7 md:mt-7">
             <Button variant="seal" onClick={() => setEntered(true)} className="h-auto w-36 flex-col gap-3 bg-transparent p-0 shadow-none hover:bg-transparent hover:shadow-none">
               <span className="flex size-14 items-center justify-center bg-cinnabar font-display text-lg leading-5 outline outline-2 outline-gold/30">南<br/>方</span><span className="font-mono text-[9px] uppercase">Bước vào Nam Phương</span>
             </Button>
