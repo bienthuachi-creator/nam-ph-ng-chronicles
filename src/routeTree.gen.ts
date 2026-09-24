@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BienNienSuRouteImport } from './routes/bien-nien-su'
+import { Route as GiaPhaRouteImport } from './routes/gia-pha'
+import { Route as HoangThanhRouteImport } from './routes/hoang-thanh'
+import { Route as MatBaoRouteImport } from './routes/mat-bao'
+import { Route as NhanVatRouteImport } from './routes/nhan-vat'
+import { Route as TheLucRouteImport } from './routes/the-luc'
+import { Route as ThienHaRouteImport } from './routes/thien-ha'
+import { Route as VuAnRouteImport } from './routes/vu-an'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BienNienSuRoute = BienNienSuRouteImport.update({
+  id: '/bien-nien-su',
+  path: '/bien-nien-su',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GiaPhaRoute = GiaPhaRouteImport.update({
+  id: '/gia-pha',
+  path: '/gia-pha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HoangThanhRoute = HoangThanhRouteImport.update({
+  id: '/hoang-thanh',
+  path: '/hoang-thanh',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatBaoRoute = MatBaoRouteImport.update({
+  id: '/mat-bao',
+  path: '/mat-bao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NhanVatRoute = NhanVatRouteImport.update({
+  id: '/nhan-vat',
+  path: '/nhan-vat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheLucRoute = TheLucRouteImport.update({
+  id: '/the-luc',
+  path: '/the-luc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThienHaRoute = ThienHaRouteImport.update({
+  id: '/thien-ha',
+  path: '/thien-ha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VuAnRoute = VuAnRouteImport.update({
+  id: '/vu-an',
+  path: '/vu-an',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bien-nien-su': typeof BienNienSuRoute
+  '/gia-pha': typeof GiaPhaRoute
+  '/hoang-thanh': typeof HoangThanhRoute
+  '/mat-bao': typeof MatBaoRoute
+  '/nhan-vat': typeof NhanVatRoute
+  '/the-luc': typeof TheLucRoute
+  '/thien-ha': typeof ThienHaRoute
+  '/vu-an': typeof VuAnRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bien-nien-su': typeof BienNienSuRoute
+  '/gia-pha': typeof GiaPhaRoute
+  '/hoang-thanh': typeof HoangThanhRoute
+  '/mat-bao': typeof MatBaoRoute
+  '/nhan-vat': typeof NhanVatRoute
+  '/the-luc': typeof TheLucRoute
+  '/thien-ha': typeof ThienHaRoute
+  '/vu-an': typeof VuAnRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bien-nien-su': typeof BienNienSuRoute
+  '/gia-pha': typeof GiaPhaRoute
+  '/hoang-thanh': typeof HoangThanhRoute
+  '/mat-bao': typeof MatBaoRoute
+  '/nhan-vat': typeof NhanVatRoute
+  '/the-luc': typeof TheLucRoute
+  '/thien-ha': typeof ThienHaRoute
+  '/vu-an': typeof VuAnRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/bien-nien-su'
+    | '/gia-pha'
+    | '/hoang-thanh'
+    | '/mat-bao'
+    | '/nhan-vat'
+    | '/the-luc'
+    | '/thien-ha'
+    | '/vu-an'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/bien-nien-su'
+    | '/gia-pha'
+    | '/hoang-thanh'
+    | '/mat-bao'
+    | '/nhan-vat'
+    | '/the-luc'
+    | '/thien-ha'
+    | '/vu-an'
+  id:
+    | '__root__'
+    | '/'
+    | '/bien-nien-su'
+    | '/gia-pha'
+    | '/hoang-thanh'
+    | '/mat-bao'
+    | '/nhan-vat'
+    | '/the-luc'
+    | '/thien-ha'
+    | '/vu-an'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BienNienSuRoute: typeof BienNienSuRoute
+  GiaPhaRoute: typeof GiaPhaRoute
+  HoangThanhRoute: typeof HoangThanhRoute
+  MatBaoRoute: typeof MatBaoRoute
+  NhanVatRoute: typeof NhanVatRoute
+  TheLucRoute: typeof TheLucRoute
+  ThienHaRoute: typeof ThienHaRoute
+  VuAnRoute: typeof VuAnRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bien-nien-su': {
+      id: '/bien-nien-su'
+      path: '/bien-nien-su'
+      fullPath: '/bien-nien-su'
+      preLoaderRoute: typeof BienNienSuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gia-pha': {
+      id: '/gia-pha'
+      path: '/gia-pha'
+      fullPath: '/gia-pha'
+      preLoaderRoute: typeof GiaPhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hoang-thanh': {
+      id: '/hoang-thanh'
+      path: '/hoang-thanh'
+      fullPath: '/hoang-thanh'
+      preLoaderRoute: typeof HoangThanhRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mat-bao': {
+      id: '/mat-bao'
+      path: '/mat-bao'
+      fullPath: '/mat-bao'
+      preLoaderRoute: typeof MatBaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nhan-vat': {
+      id: '/nhan-vat'
+      path: '/nhan-vat'
+      fullPath: '/nhan-vat'
+      preLoaderRoute: typeof NhanVatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-luc': {
+      id: '/the-luc'
+      path: '/the-luc'
+      fullPath: '/the-luc'
+      preLoaderRoute: typeof TheLucRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thien-ha': {
+      id: '/thien-ha'
+      path: '/thien-ha'
+      fullPath: '/thien-ha'
+      preLoaderRoute: typeof ThienHaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vu-an': {
+      id: '/vu-an'
+      path: '/vu-an'
+      fullPath: '/vu-an'
+      preLoaderRoute: typeof VuAnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BienNienSuRoute: BienNienSuRoute,
+  GiaPhaRoute: GiaPhaRoute,
+  HoangThanhRoute: HoangThanhRoute,
+  MatBaoRoute: MatBaoRoute,
+  NhanVatRoute: NhanVatRoute,
+  TheLucRoute: TheLucRoute,
+  ThienHaRoute: ThienHaRoute,
+  VuAnRoute: VuAnRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
