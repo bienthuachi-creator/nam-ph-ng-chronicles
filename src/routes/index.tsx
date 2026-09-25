@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { RoyalShell } from "@/components/royal-shell";
 import palace from "@/assets/nam-phuong-palace.jpg";
 import openingVideo from "@/assets/nam-phuong-opening.webm.asset.json";
+import openingVideoMp4 from "@/assets/nam-phuong-opening.mp4.asset.json";
 import dossier from "@/assets/ancient-dossier.jpg";
 import seal from "@/assets/jade-seal.jpg";
 
