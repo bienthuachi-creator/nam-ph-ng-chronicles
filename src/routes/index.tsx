@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RoyalShell } from "@/components/royal-shell";
 import palace from "@/assets/nam-phuong-palace.jpg";
@@ -18,11 +18,23 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [entered, setEntered] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    const tryPlay = () => { v.play().catch(() => {}); };
+    tryPlay();
+    v.addEventListener("canplay", tryPlay, { once: true });
+    const events = ["pointerdown", "touchstart", "scroll", "keydown"] as const;
+    events.forEach((e) => window.addEventListener(e, tryPlay, { once: true, passive: true }));
+    return () => { v.removeEventListener("canplay", tryPlay); events.forEach((e) => window.removeEventListener(e, tryPlay)); };
+  }, []);
   return <RoyalShell>
     <section className="relative min-h-[100svh] overflow-hidden bg-ink text-paper">
-      <video autoPlay muted loop playsInline preload="auto" poster={palace} aria-label="Khung cảnh cung đình Đại Ung" className="opening-film absolute inset-0 size-full object-cover">
-        <source src={openingVideo.url} type="video/webm" />
+      <video ref={videoRef} autoPlay muted loop playsInline preload="auto" poster={palace} aria-label="Khung cảnh cung đình Đại Ung" className="opening-film absolute inset-0 size-full object-cover">
         <source src={openingVideoMp4.url} type="video/mp4" />
+        <source src={openingVideo.url} type="video/webm" />
       </video>
       <div className="opening-vignette absolute inset-0" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gold/40" />
