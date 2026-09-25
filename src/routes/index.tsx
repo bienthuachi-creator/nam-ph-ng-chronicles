@@ -22,6 +22,7 @@ function Index() {
     <section className="relative min-h-[100svh] overflow-hidden bg-ink text-paper">
       <video autoPlay muted loop playsInline preload="auto" poster={palace} aria-label="Khung cảnh cung đình Đại Ung" className="opening-film absolute inset-0 size-full object-cover">
         <source src={openingVideo.url} type="video/webm" />
+        <source src={openingVideoMp4.url} type="video/mp4" />
       </video>
       <div className="opening-vignette absolute inset-0" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gold/40" />
