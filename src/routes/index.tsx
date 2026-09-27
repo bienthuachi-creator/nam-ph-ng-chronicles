@@ -1,10 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RoyalShell } from "@/components/royal-shell";
-import palace from "@/assets/nam-phuong-palace.jpg";
-import openingVideo from "@/assets/nam-phuong-opening.webm.asset.json";
-import openingVideoMp4 from "@/assets/nam-phuong-opening.mp4.asset.json";
+import heroImg from "@/assets/nam-phuong-hero.jpg.asset.json";
 import dossier from "@/assets/ancient-dossier.jpg";
 import seal from "@/assets/jade-seal.jpg";
 
@@ -18,24 +16,9 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [entered, setEntered] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = true;
-    const tryPlay = () => { v.play().catch(() => {}); };
-    tryPlay();
-    v.addEventListener("canplay", tryPlay, { once: true });
-    const events = ["pointerdown", "touchstart", "scroll", "keydown"] as const;
-    events.forEach((e) => window.addEventListener(e, tryPlay, { once: true, passive: true }));
-    return () => { v.removeEventListener("canplay", tryPlay); events.forEach((e) => window.removeEventListener(e, tryPlay)); };
-  }, []);
   return <RoyalShell>
     <section className="relative min-h-[100svh] overflow-hidden bg-ink text-paper">
-      <video ref={videoRef} autoPlay muted loop playsInline preload="auto" poster={palace} aria-label="Khung cảnh cung đình Đại Ung" className="opening-film absolute inset-0 size-full object-cover">
-        <source src={openingVideoMp4.url} type="video/mp4" />
-        <source src={openingVideo.url} type="video/webm" />
-      </video>
+      <img src={heroImg.url} alt="Khung cảnh cung đình Đại Ung" aria-hidden className="opening-film absolute inset-0 size-full object-cover" />
       <div className="opening-vignette absolute inset-0" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gold/40" />
       <div className="absolute inset-0 flex items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-10 lg:px-6 lg:py-7">
