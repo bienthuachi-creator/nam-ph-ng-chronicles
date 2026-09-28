@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RoyalShell } from "@/components/royal-shell";
-import heroImg from "@/assets/nam-phuong-hero.jpg.asset.json";
+import openingVideoMp4 from "@/assets/nam-phuong-opening.mp4.asset.json";
+import openingVideoWebm from "@/assets/nam-phuong-opening.webm.asset.json";
+import palace from "@/assets/nam-phuong-palace.jpg";
 import dossier from "@/assets/ancient-dossier.jpg";
 import seal from "@/assets/jade-seal.jpg";
 
