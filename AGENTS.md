@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Media
+- All images/videos are stored as real files in the repo (images in `src/assets/`, videos in `public/media/`), never as CDN asset pointers — so every media file syncs to GitHub.
