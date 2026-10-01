@@ -11,3 +11,4 @@
 
 ## Media
 - All images/videos are stored as real files in the repo (images in `src/assets/`, videos in `public/media/`), never as CDN asset pointers — so every media file syncs to GitHub.
+- Link previews use a real 1200×630 file in `public/` and absolute published-site URLs in leaf route metadata, because social crawlers cannot resolve bundled asset paths.

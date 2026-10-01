@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RoyalShell } from "@/components/royal-shell";
+import { shareImageMeta } from "@/lib/share-meta";
 const openingVideoMp4 = { url: "/media/nam-phuong-opening.mp4" };
 const openingVideoWebm = { url: "/media/nam-phuong-opening.webm" };
 import palace from "@/assets/nam-phuong-palace.jpg";
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/")({
   head: () => ({ meta: [
     { title: "Nam Phương — Đại Ung · Thịnh Hòa" }, { name: "description", content: "Bước vào Đại Ung năm Thịnh Hòa thứ mười tám, nơi một bí mật hoàng thất vừa thức tỉnh." },
     { property: "og:title", content: "Nam Phương — Đại Ung · Thịnh Hòa" }, { property: "og:description", content: "Thiên hạ thái bình chỉ là lớp màn che cho một ván cờ chưa kết thúc." },
-    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }, ...shareImageMeta,
   ] }), component: Index,
 });
 
