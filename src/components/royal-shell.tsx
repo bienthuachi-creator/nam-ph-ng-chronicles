@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { LogIn, Menu, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/nam-phuong-logo.png";
 
 const items = [
   ["01", "Trang chủ", "/"], ["02", "Thiên hạ", "/thien-ha"],
@@ -19,7 +20,7 @@ export function RoyalShell({ children }: { children: ReactNode }) {
       {open && <button aria-label="Đóng nền menu" className="fixed inset-0 z-40 bg-ink/70 lg:hidden" onClick={() => setOpen(false)} />}
       <aside className={`group fixed inset-y-0 left-0 z-50 flex w-64 flex-col overflow-hidden border-r border-gold/20 bg-ink text-paper transition-transform duration-500 lg:w-20 lg:hover:w-64 ${open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
         <div className="flex h-24 shrink-0 items-center border-b border-gold/15 px-6">
-          <div className="flex size-8 shrink-0 items-center justify-center border border-gold font-display text-lg text-gold">南</div>
+           <img src={logo} alt="Nam Phương" width={40} height={40} className="size-8 shrink-0 object-contain" />
           <span className="ml-4 whitespace-nowrap font-display text-gold transition-opacity duration-200 lg:opacity-0 lg:group-hover:opacity-100">THƯ KHỐ</span>
           <Button variant="ghost" size="icon" aria-label="Đóng thư khố" className="ml-auto text-paper lg:hidden" onClick={() => setOpen(false)}><X /></Button>
         </div>
