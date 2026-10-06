@@ -58,6 +58,10 @@ function Index() {
         <source src={openingVideoWebm.url} type="video/webm" />
       </video>
       <div className="opening-vignette absolute inset-0" />
+      <button type="button" onClick={toggleSound} aria-label={soundOn ? "Tắt âm thanh" : "Bật âm thanh"} className="absolute bottom-5 right-5 z-10 flex items-center gap-2 border border-gold/40 bg-ink/55 px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-gold backdrop-blur-sm transition-colors hover:border-gold hover:text-paper sm:bottom-6 sm:right-6">
+        {soundOn ? <Volume2 className="size-4" /> : <VolumeX className="size-4" />}
+        <span>{soundOn ? "Âm thanh" : "Mở âm"}</span>
+      </button>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gold/40" />
       <div className="absolute inset-0 flex items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-10 lg:px-6 lg:py-7">
         <div className={`w-full max-w-5xl transition-all duration-1000 ${entered ? "pointer-events-none scale-95 opacity-0" : ""}`}>
