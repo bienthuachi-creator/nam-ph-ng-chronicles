@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RoyalShell } from "@/components/royal-shell";
 import { shareImageMeta } from "@/lib/share-meta";
@@ -19,21 +20,38 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [entered, setEntered] = useState(false);
+  const [soundOn, setSoundOn] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    v.muted = true;
     const tryPlay = () => { v.play().catch(() => {}); };
     tryPlay();
     v.addEventListener("canplay", tryPlay, { once: true });
-    const events = ["pointerdown", "touchstart", "scroll", "keydown"] as const;
-    events.forEach((e) => window.addEventListener(e, tryPlay, { once: true, passive: true }));
+    // Trình duyệt chỉ cho phát có tiếng sau tương tác đầu tiên của khách.
+    const enableSound = () => {
+      v.muted = false;
+      v.volume = 1;
+      setSoundOn(true);
+      tryPlay();
+    };
+    const events = ["pointerdown", "touchstart", "keydown"] as const;
+    events.forEach((e) => window.addEventListener(e, enableSound, { once: true, passive: true }));
+    window.addEventListener("scroll", tryPlay, { once: true, passive: true });
     return () => {
       v.removeEventListener("canplay", tryPlay);
-      events.forEach((e) => window.removeEventListener(e, tryPlay));
+      events.forEach((e) => window.removeEventListener(e, enableSound));
+      window.removeEventListener("scroll", tryPlay);
     };
   }, []);
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    const next = !soundOn;
+    v.muted = !next;
+    if (next) { v.volume = 1; v.play().catch(() => {}); }
+    setSoundOn(next);
+  };
   return <RoyalShell>
     <section className="relative min-h-[100svh] overflow-hidden bg-ink text-paper">
       <video ref={videoRef} autoPlay muted loop playsInline preload="auto" poster={palace} aria-label="Khung cảnh cung đình Đại Ung" className="opening-film absolute inset-0 size-full object-cover">
@@ -41,6 +59,10 @@ function Index() {
         <source src={openingVideoWebm.url} type="video/webm" />
       </video>
       <div className="opening-vignette absolute inset-0" />
+      <button type="button" onClick={toggleSound} aria-label={soundOn ? "Tắt âm thanh" : "Bật âm thanh"} className="absolute bottom-5 right-5 z-10 flex items-center gap-2 border border-gold/40 bg-ink/55 px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-gold backdrop-blur-sm transition-colors hover:border-gold hover:text-paper sm:bottom-6 sm:right-6">
+        {soundOn ? <Volume2 className="size-4" /> : <VolumeX className="size-4" />}
+        <span>{soundOn ? "Âm thanh" : "Mở âm"}</span>
+      </button>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gold/40" />
       <div className="absolute inset-0 flex items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-10 lg:px-6 lg:py-7">
         <div className={`w-full max-w-5xl transition-all duration-1000 ${entered ? "pointer-events-none scale-95 opacity-0" : ""}`}>
