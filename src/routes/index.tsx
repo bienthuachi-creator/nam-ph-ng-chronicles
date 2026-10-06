@@ -19,21 +19,38 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [entered, setEntered] = useState(false);
+  const [soundOn, setSoundOn] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    v.muted = true;
     const tryPlay = () => { v.play().catch(() => {}); };
     tryPlay();
     v.addEventListener("canplay", tryPlay, { once: true });
-    const events = ["pointerdown", "touchstart", "scroll", "keydown"] as const;
-    events.forEach((e) => window.addEventListener(e, tryPlay, { once: true, passive: true }));
+    // Trình duyệt chỉ cho phát có tiếng sau tương tác đầu tiên của khách.
+    const enableSound = () => {
+      v.muted = false;
+      v.volume = 1;
+      setSoundOn(true);
+      tryPlay();
+    };
+    const events = ["pointerdown", "touchstart", "keydown"] as const;
+    events.forEach((e) => window.addEventListener(e, enableSound, { once: true, passive: true }));
+    window.addEventListener("scroll", tryPlay, { once: true, passive: true });
     return () => {
       v.removeEventListener("canplay", tryPlay);
-      events.forEach((e) => window.removeEventListener(e, tryPlay));
+      events.forEach((e) => window.removeEventListener(e, enableSound));
+      window.removeEventListener("scroll", tryPlay);
     };
   }, []);
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    const next = !soundOn;
+    v.muted = !next;
+    if (next) { v.volume = 1; v.play().catch(() => {}); }
+    setSoundOn(next);
+  };
   return <RoyalShell>
     <section className="relative min-h-[100svh] overflow-hidden bg-ink text-paper">
       <video ref={videoRef} autoPlay muted loop playsInline preload="auto" poster={palace} aria-label="Khung cảnh cung đình Đại Ung" className="opening-film absolute inset-0 size-full object-cover">
