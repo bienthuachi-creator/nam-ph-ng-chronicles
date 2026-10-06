@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RoyalShell } from "@/components/royal-shell";
 import { shareImageMeta } from "@/lib/share-meta";
